@@ -5,6 +5,7 @@ const beneficio = require('./routes/beneficio')
 const solicitarInformacion = require('./routes/solicitarInformacion')
 const carrera = require('./routes/carrera')
 const sede = require('./routes/sede')
+const calificarExperiencia = require('./routes/calificarExperiencia')
 
 // CREACION DEL SERVIDOR
 const app = express()
@@ -39,3 +40,4 @@ app.use('/api/sedes', sede)
 app.use('/api/carreras', carrera)
 app.use('/api/experiencias', experiencia)
 app.use('/api/solicitar_informacion',solicitarInformacion)
+app.use('/api/calificar_experiencia', calificarExperiencia)
