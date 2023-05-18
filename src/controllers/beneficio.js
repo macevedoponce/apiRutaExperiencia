@@ -4,27 +4,25 @@ const connection = require('../conexion')
 
 const getBeneficiosCarrera = (req = request, res = response) => {
 
-    const knex = require('knex')(connection)
+    const knex = require('knex')(connection);
 
-    const IdCarrera = req.params.id
+    const idCarrera = req.params.id;
 
     knex
-        .select('*')
-        .from('tblBeneficio')
-        .where('IdCarrera', IdCarrera)
-        .then(beneficios => {
-            return res.status(200).json(beneficios)
-        })
-        .catch(error => {
-            console.log(error)
-            res.status(500).json({
-                ok: false,
-                msg: 'Por Favor hable con el administrador'
-            })
-        })
-        .finally(() => {
-            knex.destroy();
-        })
+    .raw('CALL get_beneficios_carrera(?)', [idCarrera])
+    .then(([result]) => {
+        return res.status(200).json(result[0]);
+    })
+    .catch((error) => {
+        console.log(error);
+        res.status(500).json({
+        ok: false,
+        msg: 'Por favor, hable con el administrador',
+        });
+    })
+    .finally(() => {
+        knex.destroy();
+    });
 
 }
 
