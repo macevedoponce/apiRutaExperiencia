@@ -7,14 +7,9 @@ const getExperienciasAndContendoByCarreraAndCiclo = (req = request, res = respon
 
     const { idCarrera, exCicloInicio, exCicloFin } = req.params;
 
-    //knex.raw('CALL get_experiencias_carrera_ciclo(?, ?, ?)', [idCarrera, exCicloInicio, exCicloFin])
-    knex
-    .select('*')
-    .from('tblExperiencia')
-    .where('ExCicloInicio', '<=', exCicloInicio)
-    .andWhere('ExCicloFin', '>=', exCicloFin)
-    .then((experiencias) => {
-        return res.status(200).json(experiencias);
+    knex.raw('CALL get_experiencias_carrera_ciclo(?, ?, ?)', [idCarrera, exCicloInicio, exCicloFin])
+    .then(([experiencias]) => {
+        return res.status(200).json(experiencias[0]);
       })
       .catch((error) => {
         console.log(error);
