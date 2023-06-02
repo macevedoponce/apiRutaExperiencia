@@ -1,24 +1,24 @@
-const express = require('express')
-const cors = require('cors')
-const experiencia = require('./routes/experiencia')
-const beneficio = require('./routes/beneficio')
+const express = require('express');
+const cors = require('cors');
+const auth = require('./routes/auth');
+const experiencia = require('./routes/experiencia');
+const contenido = require('./routes/contenido');
+const beneficio = require('./routes/beneficio');
+const carrera = require('./routes/carrera');
+const sede = require('./routes/sede');
+const pregunta = require('./routes/pregunta');
+const calificacion = require('./routes/calificacion');
 const solicitarInformacion = require('./routes/solicitarInformacion')
-const carrera = require('./routes/carrera')
-const sede = require('./routes/sede')
-const calificarExperiencia = require('./routes/calificarExperiencia')
-const preguntasFrecuentes = require('./routes/preguntasFrecuentes')
-const contenido = require('./routes/contenido')
 
 // CREACION DEL SERVIDOR
-const app = express()
-//const PORT = 4040
-const PORT = 3000
+const app = express();
+const PORT = 4040;
 
 // CORS
-app.use(cors())
+app.use(cors());
 
 // Lectura y parseo del body
-app.use(express.json())
+app.use(express.json());
 // app.use(express.urlencoded({ extended: true }))
 // app.use(function (req, res, next) {
 //     res.header('Access-Control-Allow-Origin', "*");
@@ -28,20 +28,16 @@ app.use(express.json())
 // })
 
 app.listen(PORT, () => {
-    console.log(`Server runnig at port ${PORT}`)
-})
-
+  console.log(`Server runnig at port ${PORT}`);
+});
 
 // RUTAS
-//app.use('/auth', auth)
-//app.use('/experiencia', experiencia)
-//app.use('/contenido', contenido)
-//app.use('/carrera', carrera)
-app.use('/api/sedes', sede)
-app.use('/api/carreras', carrera)
-app.use('/api/experiencias', experiencia)
-app.use('/api/solicitar_informacion',solicitarInformacion)
-app.use('/api/calificar_experiencia', calificarExperiencia)
-app.use('/api/beneficio', beneficio)
-app.use('/api/preguntas_frecuentes', preguntasFrecuentes)
-app.use('/api/contenido', contenido)
+app.use('/auth', auth);
+app.use('/experiencia', experiencia);
+app.use('/contenido', contenido);
+app.use('/beneficio', beneficio);
+app.use('/carrera', carrera);
+app.use('/sede', sede);
+app.use('/pregunta', pregunta);
+app.use('/calificacion', calificacion);
+app.use('/solicitar_informacion',solicitarInformacion) //postSubirSolicitudDeInformación

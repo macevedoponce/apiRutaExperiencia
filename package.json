@@ -18,7 +18,15 @@
     "express-validator": "^7.0.1",
     "jsonwebtoken": "^9.0.0",
     "knex": "^2.4.2",
-    "mysql": "^2.18.1",
     "mysql2": "^3.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8"
   }
 }

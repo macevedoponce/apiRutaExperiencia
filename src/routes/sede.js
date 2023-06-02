@@ -1,11 +1,22 @@
-const { Router } = require('express')
-const { getSedes, getSedeAleatoria } = require('../controllers/sede')
+const { Router } = require('express');
+const {
+  getSedes,
+  //   getSede,
+  //   postSede,
+  //   putSede,
+  //   deleteSede,
+} = require('../controllers/sede');
 
-const router = Router()
+const router = Router();
 
-router.get('/', getSedes)
+router.get('/', getSedes);
 
-router.get('/sedesRandom', getSedeAleatoria)
+// router.get("/:id", getSede);
 
+// router.post("/", postSede);
 
-module.exports = router
+// router.put("/:id", putSede);
+
+// router.delete("/:id", deleteSede);
+
+module.exports = router;

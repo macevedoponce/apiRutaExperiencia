@@ -1,10 +1,28 @@
-const { Router } = require('express')
-const { getExperienciasAndContendoByCarreraAndCiclo } = require('../controllers/experiencia')
+const { Router } = require('express');
+const {
+  //   getExperiencia,
+  //   getExperiencias,
+  postExperiencia,
+  putExperiencia,
+  deleteExperiencia,
+  getExperienciasCarrera,
+  getExperienciasAndContendoByCarreraAndCiclo,
+} = require('../controllers/experiencia');
 
-const router = Router()
+const router = Router();
 
-// router.get('/', getExperiencias)
+// router.get("/", getExperiencias);
 
-router.get('/:idCarrera/:exCicloInicio/:exCicloFin', getExperienciasAndContendoByCarreraAndCiclo)
+// router.get("/:id", getExperiencia);
 
-module.exports = router
+router.get('/carrera/:IdCarrera', getExperienciasCarrera);
+
+router.get('/:idCarrera/:exCicloInicio/:exCicloFin', getExperienciasAndContendoByCarreraAndCiclo) //experiencias por ciclo especifico
+
+router.post('/', postExperiencia);
+
+router.put('/:id', putExperiencia);
+
+router.delete('/:id', deleteExperiencia);
+
+module.exports = router;
